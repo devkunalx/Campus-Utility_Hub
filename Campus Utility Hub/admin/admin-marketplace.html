@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Marketplace</title>
+
+  <link rel="stylesheet" href="/styles/admin-marketplace.css">
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="top-bar">
+      <a href="/dashboard.html" class="back-btn">
+        <img src="/assets/leftarrow.svg" height="20" alt=""><span class="back-text">Back to Dashboard</span>
+      </a>
+      <h2>Admin Marketplace</h2>
+    </header>
+
+    <div class="main-layout">
+
+      <aside class="analytics">
+        <div class="card">
+          <h3>Marketplace Stats</h3>
+          <p>Total Listings: <span id="totalCount">0</span></p>
+          <p>Active Listings: <span id="activeCount">0</span></p>
+          <p>Sold Listings: <span id="soldCount">0</span></p>
+        </div>
+
+        <div class="card">
+          <h3>Category Breakdown</h3>
+          <p>Books: <span id="bookCount">0</span></p>
+          <p>Lab coat: <span id="labCount">0</span></p>
+          <p>Electronics: <span id="electronicsCount">0</span></p>
+          <p>Others: <span id="otherCount">0</span></p>
+        </div>
+      </aside>
+
+      <section class="manager">
+        <div class="filters">
+
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="book">Books</option>
+            <option value="lab">Lab coat</option>
+            <option value="electronics">Electronics</option>
+            <option value="other">Others</option>
+          </select>
+
+          <select id="statusFilter">
+            <option value="all">All Status</option>
+            <option value="active">Active</option>
+            <option value="sold">Sold</option>
+          </select>
+        </div>
+
+        <div id="productList" class="product-list"></div>
+
+      </section>
+
+    </div>
+
+  </div>
+
+
+  <script src="/scripts/firebase-config.js"></script>
+  <script src="/scripts/admin-marketplace.js"></script>
+</body>
+
+</html>

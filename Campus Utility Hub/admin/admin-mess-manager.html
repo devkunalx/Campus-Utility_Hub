@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Mess Manager</title>
+
+    <link rel="stylesheet" href="/styles/admin-mess-manager.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+</head>
+
+<body style="display:none;">
+
+    <div class="container">
+        <header class="top-bar">
+            <a href="/dashboard.html" class="back-btn">
+                <img src="/assets/leftarrow.svg" height="20px" alt=""> <span class="back-text"> Back to Dashboard</span>
+            </a>
+            <h2>Admin Mess Manager</h2>
+        </header>
+
+        <section class="controls">
+            <select id="daySelect">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+
+            <button id="loadMenuBtn">Load Menu</button>
+        </section>
+
+        <div class="split-layout">
+
+            <section class="left-panel">
+                <h3>Edit Meals</h3>
+
+                <div class="field">
+                    <label>Breakfast</label>
+                    <textarea id="breakfastInput"></textarea>
+                </div>
+
+                <div class="field">
+                    <label>Lunch</label>
+                    <textarea id="lunchInput"></textarea>
+                </div>
+
+                <div class="field">
+                    <label>Dinner</label>
+                    <textarea id="dinnerInput"></textarea>
+                </div>
+
+                <button id="saveMenuBtn">Save Menu</button>
+            </section>
+
+            <section class="right-panel">
+
+                <div class="right-top">
+                    <h3>Menu Preview</h3>
+                    <p><b>Breakfast:</b> <span id="viewBreakfast">---</span></p>
+                    <p><b>Lunch:</b> <span id="viewLunch">---</span></p>
+                    <p><b>Dinner:</b> <span id="viewDinner">---</span></p>
+                </div>
+
+                <div class="right-bottom">
+                    <h3> Student Meal Feedback</h3>
+
+                    <table class="analytics-table">
+                        <thead>
+                            <tr>
+                                <th>Meal</th>
+                                <th>Rating</th>
+                                <th>Feedback</th>
+                            </tr>
+                        </thead>
+                        <tbody id="feedbackBody"></tbody>
+                    </table>
+                </div>
+
+
+            </section>
+        </div>
+    </div>
+
+    <script src="/scripts/firebase-config.js"></script>
+    <script src="/scripts/admin-mess-manager.js"></script>
+</body>
+
+</html>

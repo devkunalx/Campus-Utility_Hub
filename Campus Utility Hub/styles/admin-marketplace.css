@@ -1,0 +1,156 @@
+:root {
+  --bg: #1C2331;
+  --card: #2A3543;
+  --accent: #27B3B5;
+  --text: #E0E5E9;
+  --danger: #E74C3C;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: sans-serif;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.top-bar {
+    background-color: var(--card);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-bottom: 25px;
+}
+
+.back-btn {
+    position: absolute;
+    left: 15px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.back-btn:hover {
+    color: var(--text);
+    transform: translateX(-5px); 
+}
+
+.main-layout {
+  display: flex;
+  gap: 25px;
+}
+
+/* LEFT */
+.analytics {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* RIGHT */
+.manager {
+  flex: 1;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* PRODUCTS */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 15px;
+}
+
+.product {
+  background: rgba(0,0,0,0.25);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.product img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+.active { background: var(--accent); color: black; }
+.sold { background: var(--danger); }
+
+.product button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media(max-width:736px){
+    .back-text{
+        display: none;
+    }
+
+    .main-layout{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .analytics{
+      flex-direction: row;
+      width: auto;
+    }
+
+    .back-text{
+      display: none;
+    }
+}

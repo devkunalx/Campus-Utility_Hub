@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Announcements</title>
+
+    <link rel="stylesheet" href="/styles/student-announcements.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="top-bar">
+      <a href="/dashboard.html" class="back-btn">
+        <img src="/assets/leftarrow.svg" height="20px" alt=""> <span class="back-text"> Back to Dashboard</span>
+      </a>
+      <h2>Announcements and Notices</h2>
+    </header>
+
+    <div class="filter-bar">
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="hostel">Hostel</option>
+            <option value="club">Club</option>
+            <option value="academic">Academic</option>
+            <option value="general">General</option>
+        </select>
+    </div>
+
+    <div id="announcementsList" class="announcements-list"></div>
+
+</div>
+
+    <script src="/scripts/firebase-config.js"></script>
+    <script src="/scripts/student-announcements.js"></script>
+</body>
+</html>
