@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Announcements Manager</title>
+
+    <link rel="stylesheet" href="/styles/admin-announcements.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="top-bar">
+            <a href="/dashboard.html" class="back-btn">
+               <img src="/assets/leftarrow.svg" height="20" alt=""><span class="back-text"> Back to Dashboard</span>
+            </a>
+            <h2>Admin Announcements</h2>
+        </header>
+
+        <section class="form-card">
+            <h3>Create / Edit Announcement</h3>
+
+            <input id="titleInput" placeholder="Announcement Title">
+            <textarea id="contentInput" placeholder="Announcement Details"></textarea>
+
+            <select id="categorySelect">
+                <option value="hostel">Hostel</option>
+                <option value="club">Club</option>
+                <option value="academic">Academic</option>
+                <option value="general">General</option>
+            </select>
+
+            <label>Expiry Date & Time</label>
+            <input type="datetime-local" id="expiryInput">
+
+            <button id="saveBtn">Save Announcement</button>
+        </section>
+
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="Search by title...">
+
+            <select id="filterCategory">
+                <option value="all">All Categories</option>
+                <option value="hostel">Hostel</option>
+                <option value="club">Club</option>
+                <option value="academic">Academic</option>
+                <option value="general">General</option>
+            </select>
+        </div>
+
+        <section class="list-card">
+            <h3>All Announcements</h3>
+            <div id="announcementList"></div>
+        </section>
+
+    </div>
+
+</body>
+
+
+    <script src="/scripts/firebase-config.js"></script>
+    <script src="/scripts/admin-announcements.js"></script>
+</html>

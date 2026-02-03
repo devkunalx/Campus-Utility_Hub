@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | Campus Hub</title>
+    <link rel="stylesheet" href="./styles/dashboard.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="/assets/campushub.svg" alt="logo" height="30" width="30">
+                <span>Campus Hub</span>
+            </div>
+            <nav class="student-nav">
+                <a class="nav-item active" href="dashboard.html"><img src="./assets/dashboard.svg" height="24"
+                        width="24"> Dashboard</a>
+                <a class="nav-item" href="student/student-mess-menu.html"><img src="./assets/mess.svg" height="24"
+                        width="24"> Mess Menu</a>
+                <a class="nav-item" href="student/student-lost-found.html"><img src="./assets/lostfound.svg" height="24"
+                        width="24"> Lost & Found</a>
+                <a class="nav-item" href="student/student-marketplace.html"><img src="./assets/marketplace.svg"
+                        height="24" width="24"> Marketplace</a>
+                <a class="nav-item" href="student/student-announcements.html"><img src="./assets/announcements.svg"
+                        height="24" width="24"> Announcements</a>
+                <a class="nav-item" href="student/student-utilities.html"><img src="./assets/utilities.svg" height="24"
+                        width="24"> Utilities</a>
+            </nav>
+
+            <nav class="admin-nav ">
+                <a href="/dashboard.html" class="nav-item active"><img src="./assets/dashboard.svg" height="24"
+                        width="24"> Dashboard</a>
+                <a href="/admin/admin-mess-manager.html" class="nav-item"><img src="./assets/mess.svg" height="24"
+                        width="24"> Mess Manager</a>
+                <a href="/admin/admin-lost-found.html" class="nav-item"><img src="./assets/lostfound.svg" height="24"
+                        width="24"> Lost & Found</a>
+                <a href="/admin/admin-marketplace.html" class="nav-item"><img src="./assets/marketplace.svg" height="24"
+                        width="24"> Marketplace</a>
+                <a href="/admin/admin-announcements.html" class="nav-item"><img src="./assets/announcements.svg"
+                        height="24" width="24"> Announcements</a>
+                <a href="/admin/admin-utilities.html" class="nav-item"><img src="./assets/utilities.svg" height="24"
+                        width="24"> Utilities</a>
+                <a href="super-admin-portal.html" class="nav-item" id="adminAccountsLink"><img src="./assets/key.svg"
+                        height="24" width="24"> Admin Accounts</a>
+            </nav>
+        </aside>
+
+        <div class="mobile-nav-bar">
+            <button id="menuToggle"><img src="/assets/bar.svg" alt="" height="30" width="30"></button>
+            <div class="logo">
+                <img src="/assets/campushub.svg" alt="logo" height="30" width="30">
+                <span>Campus Hub</span>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <header class="header">
+                <h2>Welcome, <span id="name">Student</span></h2>
+                <button class="sign-out-btn" id="signOutBtn">Sign Out</button>
+            </header>
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-card mess-card">
+                    <div class="card-header">
+                        <h3><img src="./assets/mess.svg" height="24" width="24"> Today's Mess Menu</h3>
+                        <span id="todayDate" class="date-badge"></span>
+                    </div>
+                    <div class="meal-row">
+                        <div class="meal">
+                            <h4>Breakfast</h4>
+                            <p id="breakfastMenu">—</p>
+                            <div class="rating" data-meal="breakfast"></div>
+                        </div>
+                        <div class="meal">
+                            <h4>Lunch</h4>
+                            <p id="lunchMenu">—</p>
+                            <div class="rating" data-meal="lunch"></div>
+                        </div>
+                        <div class="meal">
+                            <h4>Dinner</h4>
+                            <p id="dinnerMenu">—</p>
+                            <div class="rating" data-meal="dinner"></div>
+                        </div>
+                    </div>
+                    <button class="open-btn student" onclick="location.href='/student/student-mess-menu.html'">Full
+                        Menu</button>
+                    <button class="open-btn admin" onclick="location.href='/admin/admin-mess-manager.html'">
+                        Menu Menu</button>
+                </div>
+
+                <div class="dashboard-card lost-found-card">
+                    <h3><img src="./assets/lostfound.svg" height="24" width="24">Lost & Found</h3>
+                    <div class="lost-found">
+
+
+                        <div class="lf-section">
+                            <h4 class="lf-title found">Found Items</h4>
+                            <div class="lost-found-items" id="foundItemsList">
+                                <p class="loading">Loading...</p>
+                            </div>
+                        </div>
+
+                        <div class="lf-section">
+                            <h4 class="lf-title lost">Lost Items</h4>
+                            <div class="lost-found-items" id="lostItemsList">
+                                <p class="loading">Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="open-btn student" onclick="location.href='/student/student-lost-found.html'">
+                        Open Portal
+                    </button>
+                    <button class="open-btn admin" onclick="location.href='/admin/admin-lost-found.html'">
+                        Open Portal
+                    </button>
+                </div>
+
+
+                <div class="dashboard-card marketplace-card full-width">
+                    <div class="card-header">
+                        <h3><img src="./assets/marketplace.svg" height="24" width="24">Marketplace</h3>
+                    </div>
+                    <div class="marketplace-items" id="marketplaceItems">
+                        <p class="loading">Loading items...</p>
+                    </div>
+                    <button class="open-btn student" onclick="location.href='/student/student-marketplace.html'">View
+                        All
+                        Items</button>
+                    <button class="open-btn admin" onclick="location.href='/admin/admin-marketplace.html'">View All
+                        Items</button>
+                </div>
+
+                <div class="bottom-row">
+                    <div class="dashboard-card announcements-card wide">
+                        <div class="card-header">
+                            <h3><img src="./assets/announcements.svg" height="24" width="24"> Latest Announcement</h3>
+                        </div>
+                        <div id="latestAnnouncement" class="announcement-content">
+                            <p class="loading">Loading announcement...</p>
+                        </div>
+                        <button class="open-btn student"
+                            onclick="window.location.href='/student/student-announcements.html'">View All</button>
+
+                        <button class="open-btn admin"
+                            onclick="window.location.href='/admin/admin-announcements.html'">View
+                            All</button>
+                    </div>
+
+                    <div class="dashboard-card utilities-card narrow">
+                        <h3><img src="./assets/utilities.svg" height="24" width="24">Campus Utilities</h3>
+                        <div class="utilities-grid">
+                            <div class="utility-box" id="waterBox">
+                                <span class="utility-name">Water</span>
+                                <span class="utility-status" id="waterStatus">—</span>
+                            </div>
+                            <div class="utility-box" id="wifiBox">
+                                <span class="utility-name">Wi-Fi</span>
+                                <span class="utility-status" id="wifiStatus">—</span>
+                            </div>
+                            <div class="utility-box" id="electricityBox">
+                                <span class="utility-name">Electricity</span>
+                                <span class="utility-status" id="electricityStatus">—</span>
+                            </div>
+                            <div class="utility-box" id="laundryBox">
+                                <span class="utility-name">Laundry</span>
+                                <span class="utility-status" id="laundryStatus">—</span>
+                            </div>
+                        </div>
+                        <button class="open-btn student"
+                            onclick="window.location.href='/student/student-utilities.html'">Status
+                            Details</button>
+                        <button class="open-btn admin"
+                            onclick="window.location.href='/admin/admin-utilities.html'">Status
+                            Details</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="./scripts/firebase-config.js"></script>
+    <script src="./scripts/dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Utilities Manager</title>
+
+  <link rel="stylesheet" href="/styles/admin-utilities.css">
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header class="top-bar">
+    <a href="/dashboard.html" class="back-btn">
+      <img src="/assets/leftarrow.svg" height="20" alt=""> <span class="back-text">Back to Dashboard</span>
+    </a>
+    <h2>Utilities Status Manager</h2>
+  </header>
+
+  <div class="split-layout">
+
+    <section class="card">
+      <h3>Official Utilities Status</h3>
+
+      <div class="utility-row">
+        <span>Water</span>
+        <select onchange="updateOfficialStatus('water', this.value)">
+          <option value="normal">Normal</option>
+          <option value="slow">Slow</option>
+          <option value="down">Down</option>
+        </select>
+      </div>
+
+      <div class="utility-row">
+        <span>WiFi</span>
+        <select onchange="updateOfficialStatus('wifi', this.value)">
+          <option value="normal">Normal</option>
+          <option value="slow">Slow</option>
+          <option value="down">Down</option>
+        
+        </select>
+      </div>
+
+      <div class="utility-row">
+        <span>Electricity</span>
+        <select onchange="updateOfficialStatus('electricity', this.value)">
+          <option value="normal">Normal</option>
+          <option value="slow">Slow</option>
+          <option value="down">Down</option>
+        </select>
+      </div>
+
+      <div class="utility-row">
+        <span>Laundry</span>
+        <select onchange="updateOfficialStatus('laundry', this.value)">
+          <option value="normal">Normal</option>
+          <option value="slow">Slow</option>
+          <option value="down">Down</option>
+        </select>
+      </div>
+
+      <button id="updateOfficialStatus"><b>Update Status</b></button>
+    </section>
+
+    <section class="card">
+      <h3>User Reports</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Utility</th>
+            <th>Status</th>
+            <th>Reported At</th>
+            <th>Verify</th>
+          </tr>
+        </thead>
+        <tbody id="reportsTable"></tbody>
+      </table>
+    </section>
+
+  </div>
+
+</div>
+
+<script src="/scripts/firebase-config.js"></script>
+<script src="/scripts/admin-utilities.js"></script>
+</body>
+</html>

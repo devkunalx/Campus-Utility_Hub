@@ -1,0 +1,147 @@
+:root {
+    --bg: #1C2331;
+    --card: #2A3543;
+    --accent: #27B3B5;
+    --text: #E0E5E9;
+    --danger: #E74C3C;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.top-bar {
+    background-color: var(--card);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-bottom: 25px;
+}
+
+.back-btn {
+    position: absolute;
+    left: 15px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.back-btn:hover {
+    color: var(--text);
+    transform: translateX(-5px); 
+}
+
+h3{
+    margin-bottom: 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.card input,
+.card textarea,
+.card select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+.card textarea{
+    max-width: 100%;
+}
+
+.card button {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    gap: 20px;
+}
+
+.item {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.item h4 {
+    margin: 10px 0 5px 0px;
+    color: var(--accent);
+}
+
+.recovered {
+    opacity: 0.5;
+}
+
+.recover-btn {
+    margin-top: 10px;
+    background: var(--danger);
+    border: none;
+    padding: 8px;
+    width: 100%;
+    color:var(--text);
+    cursor: pointer;
+}
+
+
+@media(max-width:736px){
+    .back-text{
+        display: none;
+    }
+}
